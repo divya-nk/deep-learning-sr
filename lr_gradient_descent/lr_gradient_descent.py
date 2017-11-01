@@ -33,16 +33,17 @@ def gradient_descent_runner(points, starting_b, starting_m, learning_rate, num_i
 
 
 def run():
-	points = genfromtext('data.csv', delimiter=',')
+	points = genfromtxt('data.csv', delimiter=',')
 	#hyperparameter
 	learning_rate = 0.0001
 	#slope, y = mx + b
 	initial_b = 0
 	initial_m = 0
 	num_iterations = 1000
+	print("Starting gradient descent at b = {0}, m = {1}, error = {2}".format(initial_b, initial_m, compute_error_for_given_point(initial_b, initial_m, points)))
+	print("Running...")
 	[b,m] = gradient_descent_runner(points, initial_b, initial_m, learning_rate, num_iterations)
-	print(b)
-	print(m)
+	print("After {0} iterations b = {1}, m = {2}, error = {3}".format(num_iterations, b, m, compute_error_for_given_point(b, m, points)))
 
 if __name__ == '__main__':
 	run()
